@@ -3,13 +3,13 @@
 import { FormEvent, useState } from "react";
 import { IoTrashOutline } from "react-icons/io5";
 //import * as todosApi from '@/todos/helpers/todos'
-import { useRouter } from "next/navigation";
-import {addTodo} from '@/todos/actions/todo-actions'
+//import { useRouter } from "next/navigation";
+import { addTodo, deleteTodoCompleted } from '@/todos/actions/todo-actions'
 
 
 export const NewTodo = () => {
-  
-  const router = useRouter()
+
+  //const router = useRouter()
   const [description, setDescription] = useState('')
 
   const onSubmit = async (e: FormEvent) => {
@@ -21,9 +21,10 @@ export const NewTodo = () => {
   }
 
   const deleteCompleted = async () => {
-    
-//await todosApi.deleteTodo()
-    router.refresh()
+
+    //await todosApi.deleteTodo()
+    await deleteTodoCompleted()
+    //router.refresh()
   }
 
   return (
@@ -40,8 +41,8 @@ export const NewTodo = () => {
       <span className='flex flex-1'></span>
 
       <button
-        
-        onClick={ () => deleteCompleted() }
+
+        onClick={() => deleteCompleted()}
         type='button' className="flex items-center justify-center rounded ml-2 bg-red-400 p-2 text-white hover:bg-red-700 transition-all">
         <IoTrashOutline />
         Borrar Completados
