@@ -1,7 +1,29 @@
+import { cookies } from 'next/headers'
 import React from 'react'
 import { CiChat1, CiMenuBurger, CiSearch, CiShoppingBasket } from 'react-icons/ci'
 
-export default function TopMenu() {
+
+
+
+
+const getTotalCount = (cart: { [id: string]: number }): number => {
+    let items = 0
+    Object.values(cart).forEach(value => {
+        items += value as number
+    })
+    return items
+}
+
+
+
+export default async function TopMenu() {
+
+    const cookieStore = await cookies()
+    const cart = JSON.parse(cookieStore.get('cart')?.value ?? '{}') as { [id: string]: number }
+
+    const totalItems = getTotalCount(cart)
+
+
     return (
         <div className="sticky z-10 top-0 h-16 border-b bg-gradient-to-r from-sky-600 to-cyan-400 lg:py-2.5">
 
@@ -28,7 +50,11 @@ export default function TopMenu() {
                         <CiChat1 size={25} />
                     </button>
                     <button className=" p-2 flex items-center justify-center  h-10 rounded-xl border bg-gray-100 focus:bg-gray-100 active:bg-gray-200">
-                        <span className=' text-blue-800 font-bold text-sm mr-2'>10</span>
+                        {
+                            totalItems > 0 && (
+                                <span className=' text-blue-800 font-bold text-sm mr-2'>{totalItems}</span>
+                            )
+                        }
                         <CiShoppingBasket size={25} />
                     </button>
                 </div>
