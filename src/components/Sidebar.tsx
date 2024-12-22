@@ -1,8 +1,8 @@
 import SidebarItem from '@/components/SidebarItem';
 import Image from 'next/image';
 import Link from 'next/link';
-import { CiBookmarkCheck, CiLogout } from 'react-icons/ci';
-import { IoCalendarOutline, IoCheckboxOutline, IoListOutline, IoLogoReact } from 'react-icons/io5';
+import {CiLogout } from 'react-icons/ci';
+import { IoCalendarOutline, IoCheckboxOutline, IoIceCream, IoListOutline, IoLogoReact } from 'react-icons/io5';
 
 
 const menuItems = [
@@ -20,6 +20,11 @@ const menuItems = [
         icon: <IoListOutline />,
         path: '/dashboard/server-todos',
         title: 'Server Actions'
+    },
+    {
+        icon: <IoIceCream />,
+        path: '/dashboard/cookies',
+        title: 'Cookies'
     },
 
 ]
@@ -51,13 +56,6 @@ export default function Sidebar() {
                             {...item}
                         />
                     ))}
-
-                    <li>
-                        <a href="#" className="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-600 group">
-                            <CiBookmarkCheck size={30} />
-                            <span className="group-hover:text-gray-700">Categories</span>
-                        </a>
-                    </li>
                 </ul>
             </div>
 

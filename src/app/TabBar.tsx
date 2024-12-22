@@ -1,6 +1,6 @@
 "use client"
 
-import { setCookie } from "cookies-next"
+import { setCookie } from "cookies-next/client"
 import { useState } from "react"
 
 
