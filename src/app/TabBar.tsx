@@ -1,5 +1,6 @@
 "use client"
 
+import { setCookie } from "cookies-next"
 import { useState } from "react"
 
 
@@ -17,6 +18,7 @@ export default function TabBar({ currentTab = 1, tabOptions = [1, 2, 3, 4] }: Ta
 
   const onTabSelected = (tab: number) => {
     setSelected(tab)
+    setCookie('selectedTab', tab.toString())
   }
 
   return (
