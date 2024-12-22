@@ -22,3 +22,22 @@ export const toogleTodo = async (id: string, completed: boolean): Promise<Todo> 
 
     return updatedTodo
 }
+
+export const addTodo = async (description: string)=> {
+    
+    try {
+        const todo = await prisma.todo.create({
+            data: {
+                description,
+                completed: false,
+            }
+        })
+        revalidatePath('/dashboard/server-todos')
+        return todo
+    } catch (error) {
+       console.log(error)
+    }
+    
+   
+}
+
