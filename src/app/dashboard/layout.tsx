@@ -11,11 +11,10 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         <>
             <Sidebar />
 
-            <div className="ml-auto mb-6 lg:w-[75%] xl:w-[80%] 2xl:w-[85%] min-h-screen bg-gradient-to-b from-sky-400 to-cyan-100 ">
+            <div className="ml-auto mb-6 lg:w-[75%] xl:w-[80%] 2xl:w-[85%] min-h-screen  bg-gradient-to-b from-sky-400 to-cyan-100">
 
                 <TopMenu />
-
-                <div className=" h-screen px-6 pt-6 ">
+                <div className="min-h-[calc(100vh-2rem)] px-6 pt-6">
 
                     {children}
                 </div>
