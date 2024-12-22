@@ -11,7 +11,7 @@ interface Segments {
 
 export async function GET(request: Request, { params }: Segments) {
 
-    const { id } = params
+    const { id } = await params
     const todo = await prisma.todo.findFirst({ where: { id } })
 
     if (!todo) {
@@ -27,10 +27,14 @@ const putSchema = yup.object({
 })
 
 export async function PUT(request: Request, { params }: Segments) {
-
-    const { id } = params
+    
+    const { id } = await params
     //VERFICAR SI ID EXISTE
-    const todo = await prisma.todo.findFirst({ where: { id } })
+    const todo = await prisma.todo.findFirst({
+        where: {
+            id
+        }
+    })
     if (!todo) {
         return NextResponse.json({ message: 'Todo not found' }, { status: 404 })
     }
